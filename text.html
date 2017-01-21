@@ -1,0 +1,54 @@
+<!DOCTYPE html><!--[if IE 8]><html class='ie8'><![endif]-->
+<!--[if IE 9]><html class='ie9'><![endif]-->
+<!--[if !IE]><!--><html><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>jade to pug</title>
+  <style>body{color: #ff6600;}</style>
+</head>
+<body>
+  <h1 id="id" title="h1" data-id="007" class="class1 class2">标签属性及值</h1>
+  <input type="text" placeholder="输入用户名">
+  <input type="password" placeholder="输入密码">
+  <input type="checkbox" checked>
+  <h1>保持代码格式</h1>
+  <p>1.aa<strong>11</strong>2.bb<span>22</span>3.cc
+    4.dd
+  </p>
+  <p>
+    1.aa <strong>11</strong>
+    2.bb
+    <span>22</span>
+    3.cc
+    4.dd
+  </p>
+  <h1>注释与条件注释</h1>
+  <!-- i 单行注释-->
+  <script>var course ='js_jade';</script>
+  <h1>申明变量和替换数据</h1>
+  <h2 title="html_jade">优先级大于js申明的变量HTML_JADE</h2>
+  <h1>转义
+    <p>text</p>
+    <p>&lt;script&gt;alert(1);&lt;/script&gt;&lt;span&gt;script&lt;/span&gt;;</p>
+    <p>text</p>
+    <p>&lt;script&gt;alert(1);&lt;/script&gt;&lt;span&gt;script&lt;/span&gt;;</p>
+    <h3>非转义</h3>
+    <p><script>alert(1);</script><span>script</span>;</p>
+    <p><script>alert(1);</script><span>script</span>;</p>
+    <h3>非解析变量符</h3>
+    <p>#{htmlData}</p>
+    <p>!{htmlData}</p>
+    <h3>不输出 undefined</h3>
+    <input value="undefined">
+    <input>
+  </h1>
+  <h1>流程语句</h1>
+  <h3>for each</h3>
+  <p>course</p>
+  <p>level</p>
+  <p>course: jade</p>
+  <p>level: high</p>
+  <p>node</p>
+  <p>jade</p>
+  <p>express</p>
+</body></html>
