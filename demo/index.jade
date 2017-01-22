@@ -1,0 +1,157 @@
+doctype
+<!--[if IE 8]><html class='ie8'><![endif]-->
+<!--[if IE 9]><html class='ie9'><![endif]-->
+<!--[if !IE]><!--><html><!--<![endif]-->
+head
+    meta(charset='utf-8')
+    title jade to pug
+    style.
+        body{color: #ff6600;}
+body
+    h1#id.class1.class2(title='h1',data-id='007') 标签属性及值
+    input(type='text' placeholder='输入用户名')
+    input(type='password' placeholder='输入密码')
+    input(type='checkbox' checked)
+    h1 保持代码格式
+    p
+        | 1.aa
+        strong 11
+        | 2.bb
+        span 22
+        | 3.cc
+        | 4.dd
+    p.
+        1.aa <strong>11</strong>
+        2.bb
+        <span>22</span>
+        3.cc
+        4.dd
+    h1 注释与条件注释
+    // i 单行注释
+    //- i 非缓冲注释
+    //-
+        b 块注释
+    script.
+        var course ='js_jade';
+    h1 申明变量和替换数据
+    - var course='html_jade'
+    h2(title=course) 优先级大于js申明的变量#{course.toUpperCase()}
+    h1 转义
+        - var data = 'text'
+        - var htmlData = '<script>alert(1);</script><span>script</span>;'
+        p #{data}
+        p #{htmlData}
+        p= data
+        p= htmlData
+
+        h3 非转义
+        p!=htmlData
+        p !{htmlData}
+
+        h3 非解析变量符
+        p \#{htmlData}
+        p \!{htmlData}
+
+        h3 不输出 undefined
+        input(value='#{newData}')
+        input(value=newData)
+
+    h1 流程语句
+    h3 for each while
+    - var imooc_obj={course:'jade',level:"high"}
+    - var imooc_arr=['node',"jade",'express']
+    - var imooc_json=[{id:1,items:['a','b']},{id:2,items:['a','b']}]
+    - var imooc_num=0
+    h6 遍历对象，for不可以加-
+    - for(var key in imooc_obj)
+        p #{key}
+    h6 遍历数组，each可以加-
+    each value,key in imooc_obj
+        p #{key}: #{value}
+    each item in imooc_arr
+        p= item
+    //-注意for each 均需要换行
+    dl
+        each obj in imooc_json
+            dt= obj.id
+            each item in obj.items
+                dd= item
+    h6 流程控制，while可以加-
+    ul
+        while imooc_num<=4
+            li= imooc_num++
+
+    h3 if else unless switch case
+    - var isTrue=true
+    - var lessons=['pug','微信小程序']
+    - var courseName='pug'
+    h6 if else
+    if lessons
+        if lessons.length>2
+            p more than 2: #{lessons.join(',')}
+        if lessons.length>1
+            p more than 1: #{lessons.join(',')}
+        else
+            p no lesson
+    else
+        p no lessons
+    h6 unless
+    unless !isTrue
+        p 数组长度是：#{lessons.length}
+    h6 switch case
+    case courseName
+        when "java"
+        when 'pug'
+            p Hi! pug
+        when 'node': p Hi! node
+        default
+            p jade
+
+    h1 mixin代码块，文本，属性
+    mixin lesson
+        p jade2pug
+    +lesson
+    //循环代码块
+    mixin study(name,courses)
+        p #{name} study
+        ul.course
+            each course in courses
+                li= course
+    +study('tom',['jade','pug'])
+    //嵌套代码块
+    mixin group(student)
+        h1 #{student.name}
+        +study(student.name,student.courses)
+    +group({name:'tom',courses:['jade','pug']})
+    //block 和mixin文本
+    mixin team(slogen)
+        h4 #{slogen}
+        if block
+            block
+        else
+            p no block
+    +team('no')
+    +team('yes')
+        p has block
+    //继承单个属性
+    mixin attr(name)
+        p(class!=attributes.class) #{name}
+    +attr('faker')(class="mid")
+    //继承多个属性
+    mixin attr_simple(name)
+        p&attributes(attributes) #{name}
+    +attr_simple('marin')(class="top",id='lgd')
+    //不确定参数个数
+    mixin magic(name,...items)
+        ul(class="#{name}")
+            each item in items
+                li= item
+    +magic('magic','jade','pug','node')
+
+    h1 模版继承
+    block desc
+        p jade study extends(block默认调用一次)
+    block desc
+    p www
+</html>
+

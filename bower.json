@@ -1,0 +1,20 @@
+{
+  "name": "bower",
+  "description": "",
+  "main": "",
+  "authors": [
+    "ReySun <1423993690@qq.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/ReySun/pug",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
